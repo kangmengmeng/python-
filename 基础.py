@@ -27,4 +27,35 @@ print(A.shape[0])  # 统计行数
 print(A.shape[1])  # 统计列数
 
 
-#3、
+#3、字符串替换
+#a) replace()函数可以替换string中的单个字符，也可以替换连续的字符，但无法生成字符替换映射表
+s='We Are Happy'
+t=s.replace(' ','%20')
+print(t)   # 将空格替换为%20，输出 We%20Are%20Happy
+
+#PS:pandas 里面也有一个replace()函数，其用法更加多样化。比如，可以加入一个字典，用于替换对不同的值进行替换。
+s = pd.Series([0, 1, 2, 3, 4])
+s.replace({0:'a',1:'b'})
+Out[2]: 
+0    a
+1    b
+2    2
+3    3
+4    4
+
+#b)使用translate()函数，需要使用str.maketrans('','',del) 生成一个表，其中第一个参数表示被替换的字符，第二个参数为替换的字符，第三个参数为要删除的字符
+import string
+s = 'We Are Happy'
+remove = string.punctuation  # 返回所有的标点符号  string.ascii_lowercase返回小写字母；string.ascii_uppercase返回大写字母；
+                                                 # ascii_letters返回大小写字母；string.digits 返回0-9数字
+table = str.maketrans(' ','%','')   # 一个参数与第二个参数的长度必须相等
+print(s.translate(table))
+
+#c) re.sub(pattern, repl, string, count)
+#   第一个参数为被替换的参数，第二个参数是替换后的字符串，第三个参数为输入的字符串，第四个参数指替换个数。默认为0，表示每个匹配项都替换。
+import re 
+s='We Are Happy'
+t=re.sub(' ','%20',s)
+print(t)
+
+
