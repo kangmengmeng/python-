@@ -58,4 +58,37 @@ s='We Are Happy'
 t=re.sub(' ','%20',s)
 print(t)
 
+# 4、键值对的输出和排序
+d={'a':1,'b':2,'c':3,'d':4}
+print(d)  # 输出{'a': 1, 'b': 2, 'c': 3, 'd': 4}
+print(d.items())  #输出字典d的键值对：dict_items([('a', 1), ('b', 2), ('c', 3), ('d', 4)])
+b1=[key for key,value in d.items()]
+print(b1)     #以列表形式输出字典d的key：['a', 'b', 'c', 'd']
+
+b2=[value for key,value in d.items()]
+print(b2)     #以列表形式输出字典d的value：[1, 2, 3, 4]
+
+b3={value:key for key,value in d.items()}
+print(b3)     #颠倒字典d的key:value位置：{1: 'a', 2: 'b', 3: 'c', 4: 'd'}
+
+b4=sorted(d.items(),key=lambda x:x[1])
+print(b4)   #将字典d按照value的值进行排序
+#d.items() 为待排序的对象；key=lambda x: x[1] 为对前面的对象中的第二维数据（即value）的值进行排序。
+# key=lambda  变量：变量[维数] 。维数可以按照自己的需要进行设置。
+
+# 维数以字符串来表示
+alist = [{'name':'a','age':20},{'name':'b','age':30},{'name':'c','age':25}]
+b=sorted(alist,key=lambda x:x['age'],reverse=True)
+print(b)
+
+
+
+
+
+
+
+
+
+
+
 
